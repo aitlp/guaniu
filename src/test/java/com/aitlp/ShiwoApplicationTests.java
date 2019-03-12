@@ -1,4 +1,4 @@
-package org.spaces.shiwo;
+package com.aitlp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
