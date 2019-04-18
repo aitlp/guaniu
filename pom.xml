@@ -46,18 +46,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.12</version>
         </dependency>
-<<<<<<< HEAD
-        <!--mybatis分页插件 https://github.com/pagehelper/pagehelper-spring-boot-->
-=======
         <!--mybatis分页插件-->
->>>>>>> 82f4d810da319f9ab877f93ec2f053cc17483205
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.10</version>
         </dependency>
-<<<<<<< HEAD
-=======
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -75,8 +69,6 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
-
->>>>>>> 82f4d810da319f9ab877f93ec2f053cc17483205
     </dependencies>
 
     <build>
