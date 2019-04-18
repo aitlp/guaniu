@@ -5,5 +5,10 @@ import com.aitlp.shi.data.Shi;
 import java.util.List;
 
 public interface IShiService {
-    List<Shi> list();
+    /**
+     * 分页查询方法
+     *
+     * @return
+     */
+    List<Shi> listByPage(int pageNo, int pageSize);
 }
