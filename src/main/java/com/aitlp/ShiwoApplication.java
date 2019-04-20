@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@MapperScan({"com.aitlp.shi.dao"})
+@MapperScan({"com.aitlp.*.dao"})
 @EnableSwagger2
 public class ShiwoApplication {
 
