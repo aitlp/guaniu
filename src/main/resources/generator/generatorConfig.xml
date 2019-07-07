@@ -9,9 +9,8 @@
     <!--驱动jar-->
     <classPathEntry location="${classPathEntry}"/>
 
-    <context id="OracleTables" targetRuntime="MyBatis3">
-        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userId}"
-                        password="${password}">
+    <context id="mysqlContext" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userId}" password="${password}">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -35,4 +34,6 @@
         </table>
 
     </context>
+
+
 </generatorConfiguration>

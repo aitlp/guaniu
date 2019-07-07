@@ -1,4 +1,4 @@
-package com.aitlp.common.model;
+package com.aitlp.base.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

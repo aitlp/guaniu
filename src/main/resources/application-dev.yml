@@ -1,0 +1,33 @@
+#web配置
+server:
+  port: 8080
+  connectionTimeout: 180000
+#spring配置
+spring:
+  profiles:
+    include: devCustom
+  application:
+    name: shiwo   #注册到Eureka Server上的应用名称
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  datasource:
+    name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shiwo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Hongkong
+    username: root
+    password: Passw0rd
+#logback日志日志
+logging: #可选择使用config使用logback或者直接在下面配置
+  config: classpath:logback-spring.xml
+  level:
+    root: INFO
+#mybatis
+mybatis:
+  mapper-locations: classpath:mapping/**/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
