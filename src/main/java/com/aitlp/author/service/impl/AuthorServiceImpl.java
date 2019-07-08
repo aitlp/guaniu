@@ -37,7 +37,7 @@ public class AuthorServiceImpl implements IAuthorService {
     public void handleAuthorsOfPoet(String type) {
         List<Author> authors = new ArrayList<>();
         if (StringUtils.equals("1", type)) {
-            authors = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.song.json"), Author.class);
+            authors = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.tang.json"), Author.class);
         }
         if (StringUtils.equals("2", type)) {
             authors = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.song.json"), Author.class);
