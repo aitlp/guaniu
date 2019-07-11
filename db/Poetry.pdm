@@ -1687,10 +1687,10 @@ LABL 0 新宋体,8,N</a:FontList>
 <o:Column Id="o7">
 <a:ObjectID>6C1CAC65-880A-46AE-BBFA-0861FDA3A0B8</a:ObjectID>
 <a:Name>ID</a:Name>
-<a:Code>ID</a:Code>
+<a:Code>`ID`</a:Code>
 <a:CreationDate>1562480835</a:CreationDate>
 <a:Creator>Michael</a:Creator>
-<a:ModificationDate>1562482264</a:ModificationDate>
+<a:ModificationDate>1562680126</a:ModificationDate>
 <a:Modifier>Michael</a:Modifier>
 <a:Comment>主键</a:Comment>
 <a:DataType>varchar(32)</a:DataType>
@@ -1700,22 +1700,22 @@ LABL 0 新宋体,8,N</a:FontList>
 <o:Column Id="o8">
 <a:ObjectID>6F389696-5C3D-47FF-B85C-C097D43D4960</a:ObjectID>
 <a:Name>NAME</a:Name>
-<a:Code>NAME</a:Code>
+<a:Code>`NAME`</a:Code>
 <a:CreationDate>1562480835</a:CreationDate>
 <a:Creator>Michael</a:Creator>
-<a:ModificationDate>1562481984</a:ModificationDate>
+<a:ModificationDate>1562680126</a:ModificationDate>
 <a:Modifier>Michael</a:Modifier>
 <a:Comment>姓名</a:Comment>
-<a:DataType>varchar(50)</a:DataType>
-<a:Length>50</a:Length>
+<a:DataType>varchar(1000)</a:DataType>
+<a:Length>1000</a:Length>
 </o:Column>
 <o:Column Id="o9">
 <a:ObjectID>EF924D30-6D7D-49B3-9E12-189ECEB9543A</a:ObjectID>
 <a:Name>DESC</a:Name>
-<a:Code>DESC</a:Code>
+<a:Code>`DESC`</a:Code>
 <a:CreationDate>1562480835</a:CreationDate>
 <a:Creator>Michael</a:Creator>
-<a:ModificationDate>1562593530</a:ModificationDate>
+<a:ModificationDate>1562680126</a:ModificationDate>
 <a:Modifier>Michael</a:Modifier>
 <a:Comment>描述</a:Comment>
 <a:DataType>varchar(10000)</a:DataType>
@@ -1724,10 +1724,10 @@ LABL 0 新宋体,8,N</a:FontList>
 <o:Column Id="o10">
 <a:ObjectID>F959463D-5A7A-4319-AF4D-38B86F007356</a:ObjectID>
 <a:Name>TYPE</a:Name>
-<a:Code>TYPE</a:Code>
+<a:Code>`TYPE`</a:Code>
 <a:CreationDate>1562481072</a:CreationDate>
 <a:Creator>Michael</a:Creator>
-<a:ModificationDate>1562482010</a:ModificationDate>
+<a:ModificationDate>1562680126</a:ModificationDate>
 <a:Modifier>Michael</a:Modifier>
 <a:Comment>类型，1-唐诗，2-宋诗</a:Comment>
 <a:DataType>varchar(2)</a:DataType>
