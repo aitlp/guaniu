@@ -25,7 +25,7 @@ logging: #可选择使用config使用logback或者直接在下面配置
     root: INFO
 #mybatis
 mybatis:
-  mapper-locations: classpath:mapping/**/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  mapper-locations: classpath*:mapping/**/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
 #pagehelper分页插件
 pagehelper:
   helperDialect: mysql

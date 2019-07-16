@@ -27,8 +27,17 @@ public class AuthorServiceImpl implements IAuthorService {
     private String rootPath;
 
     @Override
-    public List<Author> list(int pageNo, int pageSize) {
+    public List<Author> list(int pageNo, int pageSize, Author author) {
         AuthorExample authorExample = new AuthorExample();
+        AuthorExample.Criteria criteria = authorExample.createCriteria();
+        if (StringUtils.isNoneBlank(author.getName())) {
+            criteria.andNameLike(author.getName());
+        }
+
+        if(StringUtils.isNoneBlank(author.getType())){
+            criteria.andTypeEqualTo(author.getType());
+        }
+
         PageHelper.startPage(pageNo, pageSize);
         return authorMapper.selectByExample(authorExample);
     }

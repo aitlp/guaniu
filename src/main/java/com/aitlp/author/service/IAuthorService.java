@@ -11,7 +11,7 @@ public interface IAuthorService {
      *
      * @return
      */
-    List<Author> list(int pageNo, int pageSize);
+    List<Author> list(int pageNo, int pageSize, Author author);
 
     /**
      * 处理作者信息

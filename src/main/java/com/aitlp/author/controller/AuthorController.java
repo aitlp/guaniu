@@ -1,14 +1,12 @@
 package com.aitlp.author.controller;
 
+import com.aitlp.author.data.Author;
 import com.aitlp.author.service.IAuthorService;
 import com.aitlp.base.model.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 唐诗/宋诗作者处理
@@ -21,8 +19,8 @@ public class AuthorController {
     private IAuthorService authorService;
 
     @GetMapping(value = "/list")
-    public Page list(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10") int pageSize) {
-        return new Page(authorService.list(pageNo, pageSize));
+    public Page list(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10") int pageSize, @ModelAttribute Author author) {
+        return new Page(authorService.list(pageNo, pageSize, author));
     }
 
     /**
