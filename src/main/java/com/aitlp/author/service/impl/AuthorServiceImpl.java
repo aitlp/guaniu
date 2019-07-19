@@ -39,7 +39,8 @@ public class AuthorServiceImpl implements IAuthorService {
         }
 
         PageHelper.startPage(pageNo, pageSize);
-        return authorMapper.selectByExample(authorExample);
+        List<Author> list = authorMapper.selectByExample(authorExample);
+        return list;
     }
 
     @Override
