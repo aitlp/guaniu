@@ -45,11 +45,10 @@ public class FileUtil {
      * @return
      */
     public static String readFileContent(String fileFullPath) {
-        StringBuffer stringBuffer = new StringBuffer();
         InputStreamReader inputStreamReader;
         FileInputStream fileInputStream;
         BufferedReader bufferedReader;
-        stringBuffer = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer();
         try {
             fileInputStream = new FileInputStream(fileFullPath);
             inputStreamReader = new InputStreamReader(fileInputStream);
