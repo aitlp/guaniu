@@ -2,6 +2,7 @@ package com.aitlp.author.service.impl;
 
 import com.aitlp.author.dao.AuthorMapper;
 import com.aitlp.author.data.Author;
+import com.aitlp.author.data.AuthorDTO;
 import com.aitlp.author.data.AuthorExample;
 import com.aitlp.author.service.IAuthorService;
 import com.aitlp.base.util.FileUtil;
@@ -30,12 +31,12 @@ public class AuthorServiceImpl implements IAuthorService {
     public List<Author> list(int pageNo, int pageSize, Author author) {
         AuthorExample authorExample = new AuthorExample();
         AuthorExample.Criteria criteria = authorExample.createCriteria();
-        if (StringUtils.isNoneBlank(author.getName())) {
-            criteria.andNameLike(author.getName());
+        if (StringUtils.isNoneBlank(author.getAuthorName())) {
+            criteria.andAuthorNameLike("%" + author.getAuthorName() + "%");
         }
 
-        if(StringUtils.isNoneBlank(author.getType())){
-            criteria.andTypeEqualTo(author.getType());
+        if (StringUtils.isNoneBlank(author.getAuthorType())) {
+            criteria.andAuthorTypeEqualTo(author.getAuthorType());
         }
 
         PageHelper.startPage(pageNo, pageSize);
@@ -45,18 +46,20 @@ public class AuthorServiceImpl implements IAuthorService {
 
     @Override
     public void handleAuthorsOfPoet(String type) {
-        List<Author> authors = new ArrayList<>();
+        List<AuthorDTO> authorDTOS = new ArrayList<>();
         if (StringUtils.equals("1", type)) {
-            authors = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.tang.json"), Author.class);
+            authorDTOS = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.tang.json"), AuthorDTO.class);
         }
         if (StringUtils.equals("2", type)) {
-            authors = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.song.json"), Author.class);
+            authorDTOS = JSONArray.parseArray(FileUtil.readFileContent(rootPath + "/json/authors.song.json"), AuthorDTO.class);
         }
 
-        if (!ObjectUtils.isEmpty(authors)) {
-            for (Author author : authors) {
+        if (!ObjectUtils.isEmpty(authorDTOS)) {
+            Author author;
+            for (AuthorDTO authorDTO : authorDTOS) {
+                author = authorDTO.changeToAuthor();
                 author.setId(UUIDUtil.uuid());
-                author.setType(type);
+                author.setAuthorType(type);
                 authorMapper.insert(author);
             }
         }
