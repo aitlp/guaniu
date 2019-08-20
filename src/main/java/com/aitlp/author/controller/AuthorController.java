@@ -20,7 +20,7 @@ public class AuthorController {
 
     @GetMapping(value = "/list")
     public Page list(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10") int pageSize, @ModelAttribute Author author) {
-        return new Page(authorService.list(pageNo, pageSize, author));
+        return authorService.list(pageNo, pageSize, author);
     }
 
     /**

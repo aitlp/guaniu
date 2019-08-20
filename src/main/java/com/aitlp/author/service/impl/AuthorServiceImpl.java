@@ -5,6 +5,7 @@ import com.aitlp.author.data.Author;
 import com.aitlp.author.data.AuthorDTO;
 import com.aitlp.author.data.AuthorExample;
 import com.aitlp.author.service.IAuthorService;
+import com.aitlp.base.model.Page;
 import com.aitlp.base.util.FileUtil;
 import com.aitlp.base.util.UUIDUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -28,20 +29,38 @@ public class AuthorServiceImpl implements IAuthorService {
     private String rootPath;
 
     @Override
-    public List<Author> list(int pageNo, int pageSize, Author author) {
+    public Page<Author> list(int pageNo, int pageSize, Author author) {
+        PageHelper.startPage(pageNo, pageSize);
+        List<Author> list = selectAuthors(author);
+        return new Page<>(list);
+    }
+
+    @Override
+    public List<Author> selectAuthors(Author author) {
         AuthorExample authorExample = new AuthorExample();
         AuthorExample.Criteria criteria = authorExample.createCriteria();
         if (StringUtils.isNoneBlank(author.getAuthorName())) {
             criteria.andAuthorNameLike("%" + author.getAuthorName() + "%");
         }
 
-        if (StringUtils.isNoneBlank(author.getAuthorType())) {
-            criteria.andAuthorTypeEqualTo(author.getAuthorType());
+        if (StringUtils.isNoneBlank(author.getDynasty())) {
+            criteria.andDynastyEqualTo(author.getDynasty());
         }
 
-        PageHelper.startPage(pageNo, pageSize);
         List<Author> list = authorMapper.selectByExample(authorExample);
         return list;
+    }
+
+    @Override
+    public int saveAuthor(Author author) {
+        int result;
+        if (ObjectUtils.isEmpty(author.getId())) {
+            author.setId(UUIDUtil.uuid());
+            result = authorMapper.insert(author);
+        } else {
+            result = authorMapper.updateByExample(author, new AuthorExample());
+        }
+        return result;
     }
 
     @Override
@@ -58,9 +77,8 @@ public class AuthorServiceImpl implements IAuthorService {
             Author author;
             for (AuthorDTO authorDTO : authorDTOS) {
                 author = authorDTO.changeToAuthor();
-                author.setId(UUIDUtil.uuid());
-                author.setAuthorType(type);
-                authorMapper.insert(author);
+                author.setDynasty(type);
+                saveAuthor(author);
             }
         }
     }
