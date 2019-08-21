@@ -52,10 +52,18 @@ public class PoetServiceImpl implements IPoetService {
                 poetDTOs = JSONArray.parseArray(FileUtil.readFileContent(filePath), PoetDTO.class);
                 if (!ObjectUtils.isEmpty(poetDTOs)) {
                     for (PoetDTO poetDTO : poetDTOs) {
-                        List<Author> authors = authorService.selectAuthors(new Author().setAuthorName(poetDTO.getAuthor()));
+                        Author exampleAuthor = new Author();
+                        exampleAuthor.setAuthorName(poetDTO.getAuthor());
+                        exampleAuthor.setDynasty(dynasty);
+                        List<Author> authors = authorService.selectAuthors(exampleAuthor);
                         PoetWithBLOBs poetWithBLOBs = poetDTO.changeToPoet();
-                        poetWithBLOBs.setAuthorId(authors.get(0).getId());
+                        if(ObjectUtils.isEmpty(authors)){
+                            System.out.println(poetDTO.getAuthor() + "--该作者未找到");
+                        }else{
+                            poetWithBLOBs.setAuthorId(authors.get(0).getId());
+                        }
                         poetWithBLOBs.setDynasty(dynasty);
+                        savePoet(poetWithBLOBs);
                     }
                 }
             }

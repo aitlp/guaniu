@@ -15,8 +15,9 @@ public class PoetDTO {
     public PoetWithBLOBs changeToPoet() {
         PoetWithBLOBs poet = new PoetWithBLOBs();
         poet.setTitle(title);
-        poet.setParagraphs(StringUtils.join(paragraphs, ","));
-        poet.setStrains(StringUtils.join(strains, ","));
+        poet.setAuthorName(author);
+        poet.setParagraphs(StringUtils.join(paragraphs, ""));
+        poet.setStrains(StringUtils.join(strains, ""));
         return poet;
     }
 }
